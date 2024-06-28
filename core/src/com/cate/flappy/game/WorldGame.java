@@ -33,28 +33,16 @@ public class WorldGame {
     static final int STATE_GAME_OVER = 1;
     public int state;
 
-    /**
-     * Time between pipes, if you increase this number the space between pipes will increase
-     */
     final float TIME_TO_SPAWN_PIPE = 1.5f;
     float timeToSpawnPipe;
 
     public World oWorldBox;
     public int score;
 
-    /**
-     * Save the information about the bird
-     */
     Bird oBird;
 
-    /**
-     * Save the information about the pipes
-     */
     Array<Pipe> arrPipes;
 
-    /**
-     * Save the information about the bodies (box2d). Includes: Birds, pipes & counter object
-     */
     Array<Body> arrBodies;
 
     public WorldGame() {
@@ -80,7 +68,7 @@ public class WorldGame {
         BodyDef bd = new BodyDef();
         bd.position.x = oBird.position.x;
         bd.position.y = oBird.position.y;
-        bd.type = BodyType.DynamicBody;
+        bd.type = BodyDef.BodyType.DynamicBody;
 
         Body oBody = oWorldBox.createBody(bd);
 
@@ -103,7 +91,7 @@ public class WorldGame {
         BodyDef bd = new BodyDef();
         bd.position.x = 0;
         bd.position.y = HEIGHT;
-        bd.type = BodyType.StaticBody;
+        bd.type = BodyDef.BodyType.StaticBody;
         Body oBody = oWorldBox.createBody(bd);
 
         EdgeShape shape = new EdgeShape();
@@ -121,7 +109,7 @@ public class WorldGame {
         BodyDef bd = new BodyDef();
         bd.position.x = 0;
         bd.position.y = 1.1f;
-        bd.type = BodyType.StaticBody;
+        bd.type = BodyDef.BodyType.StaticBody;
         Body oBody = oWorldBox.createBody(bd);
 
         EdgeShape shape = new EdgeShape();
@@ -159,7 +147,7 @@ public class WorldGame {
         BodyDef bd = new BodyDef();
         bd.position.x = x;
         bd.position.y = y;
-        bd.type = BodyType.KinematicBody;
+        bd.type = BodyDef.BodyType.KinematicBody;
         Body oBody = oWorldBox.createBody(bd);
         oBody.setLinearVelocity(Pipe.SPEED_X, 0);
 
@@ -182,7 +170,7 @@ public class WorldGame {
         BodyDef bd = new BodyDef();
         bd.position.x = x;
         bd.position.y = y;
-        bd.type = BodyType.KinematicBody;
+        bd.type = BodyDef.BodyType.KinematicBody;
         Body oBody = oWorldBox.createBody(bd);
         oBody.setLinearVelocity(Counter.SPEED_X, 0);
 
